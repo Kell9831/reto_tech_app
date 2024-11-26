@@ -26,9 +26,9 @@ export async function fetchWithAuth<T>(
         const errorData = await response.json();
         errorMessage = errorData.message || errorMessage;
       } catch {
-        // 
+        throw new Error(errorMessage);
       }
-      throw new Error(errorMessage);
+      
     }
 
     if (response.status === 204) return {} as T;

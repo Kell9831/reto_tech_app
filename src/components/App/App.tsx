@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { getPosts, createPost, updatePost, deletePost } from "../services/post";
+import { getMyPosts, createPost, updatePost, deletePost } from "../services/post";
 import { Post } from "../../types/index";
 import PostList from "../PostList/PostList";
 import PostForm from "../PostForm/PostForm";
+import { useAuth } from "../contexts/authContext";
 
 const App = () => {
+  const { logout } = useAuth();
   const [posts, setPosts] = useState<Post[]>([]);
   const [error, setError] = useState<string>("");
   const [postToEdit, setPostToEdit] = useState<Post | null>(null);
@@ -12,7 +14,7 @@ const App = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const postsData = await getPosts();
+        const postsData = await getMyPosts();
         setPosts(postsData);
       } catch (err: unknown) {
         if (err instanceof Error) {
@@ -77,9 +79,15 @@ const App = () => {
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-center text-purple-500 mb-6">
-          Posts
-        </h1>
+        <div className="flex items-center justify-between mb-6">
+          <h1 className="text-3xl font-bold text-purple-400">Yours Posts</h1>
+          <button
+            onClick={logout}
+            className="px-4 py-2 text-sm font-semibold text-white bg-purple-400 rounded-md hover:bg-purple-600"
+          >
+            Logout
+          </button>
+        </div>
 
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         <div className="space-y-6">

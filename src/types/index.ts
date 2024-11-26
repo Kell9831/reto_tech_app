@@ -28,8 +28,8 @@ export interface AuthResponse {
   access_token: string; 
 }
   
-  export interface UserCredentials {
-    username: string;
-    password: string;
-  }
+export interface UserCredentials {
+  username: string;
+   password: string;
+}
   

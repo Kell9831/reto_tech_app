@@ -5,6 +5,10 @@ export async function getPosts(): Promise<Post[]> {
   return fetchWithAuth("/posts");
 }
 
+export async function getMyPosts(): Promise<Post[]> {
+  return fetchWithAuth("/posts/me");
+}
+
 export async function getPost(id: number): Promise<Post> {
   return fetchWithAuth(`/posts/${id}`);
 }

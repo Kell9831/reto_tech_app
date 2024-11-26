@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Para redirigir
+import { useNavigate } from "react-router-dom"; 
 import { useAuth } from "../contexts/authContext";
 
 const Login = () => {
@@ -28,11 +28,11 @@ const Login = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
-        <h1 className="text-2xl font-bold text-center text-gray-700">Iniciar Sesión</h1>
+        <h1 className="text-2xl font-bold text-center text-gray-700">Login</h1>
         <form onSubmit={handleSubmit} className="mt-6">
           <div className="mb-4">
             <label htmlFor="username" className="block text-sm font-medium text-gray-600">
-              Usuario
+              Username
             </label>
             <input
               type="text"
@@ -46,7 +46,7 @@ const Login = () => {
           </div>
           <div className="mb-4">
             <label htmlFor="password" className="block text-sm font-medium text-gray-600">
-              Contraseña
+              Password
             </label>
             <input
               type="password"
@@ -61,15 +61,15 @@ const Login = () => {
           {error && <p className="text-sm text-red-500">{error}</p>}
           <button
             type="submit"
-            className="w-full px-4 py-2 mt-4 font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none"
+            className="w-full px-4 py-2 mt-4 font-medium text-white bg-sky-500 rounded-md hover:bg-sky-600 focus:outline-none"
           >
-            Iniciar Sesión
+            Login
           </button>
         </form>
         <p className="mt-4 text-sm text-center text-gray-600">
-          ¿No tienes una cuenta?{" "}
-          <a href="/register" className="text-blue-500 hover:underline">
-            Regístrate
+          ¿You don't have an account?{" "}
+          <a href="/register" className="text-sky-500 hover:underline">
+            Register
           </a>
         </p>
       </div>
